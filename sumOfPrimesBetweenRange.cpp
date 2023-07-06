@@ -1,3 +1,4 @@
+//In this program we are using both Sieve of Eratosthenes and Prefix technique
 #include <iostream>
 using namespace std;
 

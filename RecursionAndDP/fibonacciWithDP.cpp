@@ -1,9 +1,8 @@
 #include<iostream>
 using namespace std;
-int myf[100] = {0};
+int myf[100000] = {0};
 int fibo(int n)
 {
-    cout<<"call"<<endl;
     if(myf[n] != 0)
         return myf[n];
     if(n < 2)

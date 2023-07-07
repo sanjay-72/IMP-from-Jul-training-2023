@@ -5,7 +5,7 @@ void factorize(int i)
 {
     if(x % i)
     {
-        
+
     }
     for(int j = i;j<x)
 }

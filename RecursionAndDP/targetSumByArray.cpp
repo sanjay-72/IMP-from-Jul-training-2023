@@ -4,6 +4,7 @@ int n;
 bool flag=false;
 void findTargets(int x, int i, int arr[])
 {
+    cout<<x<<" "<<i<<endl;
     if(i >= n) {
         if(x==0)
             flag=true;

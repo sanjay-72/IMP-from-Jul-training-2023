@@ -3,14 +3,33 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
+queue<int> myQueue;
+int V, E;
 
+void bfs(vector<int> adj[V], bool visited[], int startNode)
+{
+    myQueue.push(startNode);
+    visited[startNode] = true;
+    while(!myQueue.empty())
+    {
+        cout<<myQueue.front()<<" ";
+        for(int i = 0;i<adj[myQueue.front()].size();i++)
+        {
+            if(!visited[adj[myQueue.front()][i]])
+                myQueue.push(adj[myQueue.front()][i]);
+            visited[adj[myQueue.front()][i]] = true;
+        }
+        myQueue.pop();
+    }
+    cout<<endl;
+}
 int main()
 {
-    queue<int> myQueue;
-    vector<int> visited;
-    int V, E;
     cin>>V>>E;
     vector<int> adj[V];
+    bool visited[V];
+    for(int i = 0;i<V;i++)
+        visited[i] = false;
     for(int i = 0;i<E;i++)
     {
         int x,y;
@@ -18,19 +37,14 @@ int main()
         adj[x].push_back(y);
         adj[y].push_back(x);
     }
-    myQueue.push(0);
-    visited.push_back(0);
-    while(!myQueue.empty())
+    cout<<"Enter start node : ";
+    int startNode;
+    cin>>startNode;
+
+    bfs(adj,visited,startNode);
+    for(int i = 0;i<V;i++)
     {
-        cout<<myQueue.front()<<" ";
-        for(int i = 0;i<adj[myQueue.front()].size();i++)
-        {
-            if(find(visited.begin(),visited.end(),adj[myQueue.front()][i]) == visited.end())
-            myQueue.push(adj[myQueue.front()][i]);
-            visited.push_back(adj[myQueue.front()][i]);
-        }
-        myQueue.pop();
-
+        if(!visited[i])
+            bfs(adj, visited, i);
     }
-
 }

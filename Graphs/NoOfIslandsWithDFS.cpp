@@ -7,7 +7,7 @@ int m, n;
 
 void dfs(int x, int y)
 {
-    if(x < 0 || x >= m || y < 0 || y >= n || visited[x][y] || !area[x][y])
+    if(x < 0 || x >= m || y < 0 || y >= n || !area[x][y] || visited[x][y])
         return;
     visited[x][y] = true;
     dfs(x+1, y);

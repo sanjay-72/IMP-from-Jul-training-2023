@@ -5,8 +5,9 @@
 using namespace std;
 queue<int> myQueue;
 int V, E;
+vector<int> adj[10001];
 
-void bfs(vector<int> adj[V], bool visited[], int startNode)
+void bfs(bool visited[], int startNode)
 {
     myQueue.push(startNode);
     visited[startNode] = true;
@@ -26,7 +27,6 @@ void bfs(vector<int> adj[V], bool visited[], int startNode)
 int main()
 {
     cin>>V>>E;
-    vector<int> adj[V];
     bool visited[V];
     for(int i = 0;i<V;i++)
         visited[i] = false;
@@ -41,10 +41,10 @@ int main()
     int startNode;
     cin>>startNode;
 
-    bfs(adj,visited,startNode);
+    bfs(visited,startNode);
     for(int i = 0;i<V;i++)
     {
         if(!visited[i])
-            bfs(adj, visited, i);
+            bfs(visited, i);
     }
 }
